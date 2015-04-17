@@ -1,0 +1,12 @@
+{
+  "lastupdated": "2015-04-16T09:45:23Z",
+  "updates": [{
+    "date": "2015-04-15T09:00:19Z",
+    "message": "There are severe problems and this service is currently unavailable.",
+    "status": 2
+  }, {
+    "date": "2015-04-15T14:09:12Z",
+    "message": "This service is now working normally",
+    "status": 0
+  }]
+}
