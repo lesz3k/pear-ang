@@ -103,13 +103,36 @@ body {
 .row {
     padding-bottom: 5px;
 }
-
+.status-colors{
+    padding-top:30px;
+    >div {
+    display: inline-block;
+        margin-right:5px;
+    }
+    span{
+        margin-right: 5px;
+        
+        display: inline-block;
+      height: 25px;
+      width: 15px;
+    }
+}
 .status-box {
     margin-right: 10px;
     margin-left: 10px;
     display: inline-block;
   height: 15px;
   width: 15px;
+    border:none;
+    &.redProduct{
+         background-color: #e04854;
+    }
+    &.greenProduct {
+         background-color: #7db658;
+    }
+    &.amberProduct {  
+        background-color: #fdb913;
+    }
 }
 
 .status-Grey {
