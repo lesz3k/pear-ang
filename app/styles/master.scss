@@ -107,7 +107,15 @@ body {
     padding-top:30px;
     >div {
     display: inline-block;
-        margin-right:5px;
+
+        margin:0 5px 10px 0;
+        p{
+            -ms-transform: rotate(-90deg); /* IE 9 */
+    -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+    transform: rotate(-90deg);
+              display: block;
+  margin: 0 0px 15px -10px;
+        }
     }
     span{
         margin-right: 5px;

@@ -8,11 +8,11 @@
         <h3 class="panel-title">Last 24 Hrs</h3>
       </div>
       <div class="panel-body">
-        <span class="stausDate">Date: </span>
+        <span class="stausDate">Date: {{productData.lastupdated.date}}</span>
       </div>
     </div>
   </div>
-  <div class="col-sm-8 visible-lg">
+  <div class="col-sm-8">
     <div class="col-lg-12 status-colors">
 <div ng-repeat="product in productData.rag_hrs">
 
@@ -28,8 +28,8 @@
 
 
 
-<div class="homePageStatusView table-responsive">
-  <table class="table homePageStatusViewTable" id="no-more-tables">
+<div class="">
+  <table class="table table-detail" id="no-more-tables">
     <thead>
       <tr>
         <th>Time</th>

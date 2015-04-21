@@ -49,11 +49,6 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
     })
 
 
-  .state('about', {
-    url: '/about',
-    templateUrl: 'views/about.html',
-    controller: 'AboutCtrl'
-  });
 
 
 
@@ -68,48 +63,7 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
   };
 })
 
-.service('statusColour', function() {
 
-  this.list = function(product) {
-    var className,
-      amber = false,
-      red = false,
-      green = false,
-      prodUpdates = [];
-
-
-    if (product.updates != undefined) {
-      prodUpdates = product.updates;
-        setColor(prodUpdates)
-    } else {
-      prodUpdates =[];
-      prodUpdates.push(product);
-      setColor(prodUpdates);
-    }
-
-    function setColor(prodUpdates) {
-      for (var i = 0; i < prodUpdates.length; i++) {
-        if (prodUpdates[i].status == 1) {
-          amber = true;
-        } else if (prodUpdates[i].status == 2) {
-          red = true;
-        } else {
-          green = true;
-        }
-      }
-    };
-
-    if (amber == true) {
-      className = "amberProduct";
-    } else if (red == true) {
-      className = "redProduct";
-    } else {
-      className = "greenProduct";
-    }
-    return className;
-  }
-
-})
 .service('subsDate', function() {
 
   this.list = function(jsonPair) {

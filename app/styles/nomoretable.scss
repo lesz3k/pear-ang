@@ -1,4 +1,4 @@
-﻿@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 800px) {
 
     /* Force table to not be like tables anymore */
     #no-more-tables table,
@@ -9,7 +9,21 @@
     #no-more-tables tr {
         display: block;
     }
-
+    .table-detail tbody tr td{
+    &:first-child{
+        span {padding-top: 12px;}
+    }
+        &:nth-child(2){
+            background-color: #f5f5f5;
+        }
+    }
+    #no-more-tables tbody tr td:first-child{
+        height:45px;
+          font-size: 16px;
+        a{
+            padding-top:5px;
+        }
+    }
         /* Hide table headers (but not display: none;, for accessibility) */
         #no-more-tables thead tr {
             position: absolute;
@@ -19,6 +33,7 @@
 
     #no-more-tables tr {
         border: 1px solid #ccc;
+          margin-bottom: 20px;
     }
 
     #no-more-tables td {
@@ -26,9 +41,14 @@
         border: none;
         border-bottom: 1px solid #eee;
         position: relative;
-        padding-left: 50%;
+        //padding-left: 50%;
         white-space: normal;
-        text-align: left;
+        text-align: center;
+    }
+    .homePageStatusViewTable{
+        td {
+            height:35px;
+        }
     }
 
         #no-more-tables td:before {
