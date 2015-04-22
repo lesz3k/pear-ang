@@ -10,7 +10,7 @@
         <h3 class="panel-title serviceLogTitle" style="padding-bottom: 20px">Last 30 days</h3>
       <div ng-repeat="product in productData.rag_days">
 
-        <p>{{product.date.date}}</p>
+        <p>{{product.date.dateNoYear}}</p>
         <span ng-class="{0:'status-Green', 1:'status-Amber', 2:'status-Red'}[product.status]"></span>
       </div>
 
@@ -32,7 +32,7 @@
     </thead>
     <tbody>
       <tr ng-repeat="product in productData.updates">
-        <td><span class="status-box" ng-class="getStatus(product)"></span>{{product.date.date}} {{product.date.hour}} (GMT)</td>
+        <td><span class="status-box" ng-class="getStatus(product)"></span>{{product.date.onlyDay}}, {{product.date.date}}, {{product.date.hour}} (GMT)</td>
         <td>{{product.message}}</td>
       </tr>
     </tbody>

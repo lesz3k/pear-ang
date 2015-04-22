@@ -19,36 +19,37 @@ service('statusColour', function() {
       green = false,
       prodUpdates = [];
 
-
-    if (product.updates != undefined) {
+    function setColor(prodUpdates) {
+      for (var i = 0; i < prodUpdates.length; i++) {
+        if (prodUpdates[i].status === 1) {
+          amber = true;
+        } else if (prodUpdates[i].status === 2) {
+          red = true;
+        } else {
+          green = true;
+        }
+      }
+    }
+      
+    if (product.updates !== undefined) {
       prodUpdates = product.updates;
-      setColor(prodUpdates)
+      setColor(prodUpdates);
     } else {
       prodUpdates = [];
       prodUpdates.push(product);
       setColor(prodUpdates);
     }
 
-    function setColor(prodUpdates) {
-      for (var i = 0; i < prodUpdates.length; i++) {
-        if (prodUpdates[i].status == 1) {
-          amber = true;
-        } else if (prodUpdates[i].status == 2) {
-          red = true;
-        } else {
-          green = true;
-        }
-      }
-    };
+    
 
-    if (red == true) {
-      className = "redProduct";
-    } else if (amber == true) {
-      className = "amberProduct";
+    if (red === true) {
+      className = 'redProduct';
+    } else if (amber === true) {
+      className = 'amberProduct';
     } else {
-      className = "greenProduct";
+      className = 'greenProduct';
     }
     return className;
-  }
+  };
 
 });

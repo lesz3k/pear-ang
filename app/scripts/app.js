@@ -46,12 +46,7 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
       url: '/last30days',
       templateUrl: 'views/product.lastMonth.html',
       controller: 'ProductCtrl'
-    })
-
-
-
-
-
+    });
 
   //$httpProvider.defaults.headers.common['Authorization'] = 'Basic ' + 'publicstatusapi' + ':' + 'Password1!';
 })
@@ -68,7 +63,7 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
 
   this.list = function(jsonPair) {
     
-      var cos = 0;
+     // var cos = 0;
       /*
       function subsDate(jsonPair) {
           for (var i = 0; i < $scope.productData.jsonPair.length; i++) {
@@ -84,7 +79,7 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
       return jsonPair;
       
     
-  }
+  };
 
 });
 

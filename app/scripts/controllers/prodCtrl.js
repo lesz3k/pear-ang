@@ -15,7 +15,7 @@ angular.module('pearsonAngApp')
     $scope.productData = [];
     $scope.daty = [];
     $scope.prodNames = [];
-    $scope.currentUrl;
+    $scope.currentUrl = '';
     $scope.mainJSON = [];
     //$http.jsonp('https://pearsondev.service-now.com/productstatus.do?callback=JSON_CALLBACK')
     /*
@@ -73,12 +73,12 @@ angular.module('pearsonAngApp')
 
         var path = $location.path();
 
-        for (var i = 0; i < $scope.prodNames.length; i++) {
-          var prodName = $scope.prodNames[i];
-          if (path.indexOf(prodName) > 0) {
-            $scope.currentUrl = prodName;
+        for (var j = 0; j < $scope.prodNames.length; j++) {
+          var prodName2 = $scope.prodNames[j];
+          if (path.indexOf(prodName2) > 0) {
+            $scope.currentUrl = prodName2;
 
-            $http.get($scope.mainJSON[i].url)
+            $http.get($scope.mainJSON[j].url)
               .success(function(subData) {
                 console.log('sub JSON passed!');
 
@@ -86,16 +86,25 @@ angular.module('pearsonAngApp')
                 $scope.daty = subData.updates;
                // $scope.lastUpdated;
                 function subsDate(jsonPair) {
-                  for (var i = 0; i < jsonPair.length; i++) {
-                    var hour = jsonPair[i].date.slice(11, 16),
-                      hourNoMins = jsonPair[i].date.slice(11, 13),
-                      date = jsonPair[i].date.slice(5, 10),
-                      dateOnlyDay = jsonPair[i].date.slice(8, 10);
-                    jsonPair[i].date = {
+                  for (var k = 0; k < jsonPair.length; k++) {
+                  
+                     
+                     
+                      
+                      
+                      var hour = String(Date.parse((jsonPair[k].date).substring(0, (jsonPair[k].date).length - 1))).slice(16, 21),
+                date = String(Date.parse((jsonPair[k].date).substring(0, (jsonPair[k].date).length - 1))).slice(4, 15),
+                          onlyDay = String(Date.parse((jsonPair[k].date).substring(0, (jsonPair[k].date).length - 1))).slice(0, 3),
+                          dateNoYear = String(Date.parse((jsonPair[k].date).substring(0, (jsonPair[k].date).length - 1))).slice(4, 10);
+                      
+                      
+                      
+                      
+                    jsonPair[k].date = {
                       hour: hour,
-                      hourNoMins: hourNoMins,
-                      dateOnlyDay: dateOnlyDay,
-                      date: date
+                      date: date,
+                        onlyDay : onlyDay,
+                        dateNoYear: dateNoYear
                     };
                   }
                 }
@@ -105,13 +114,14 @@ angular.module('pearsonAngApp')
                 subsDate($scope.productData.rag_days);
                 
                 (function(){
-                    var hour = $scope.productData.lastupdated.slice(11, 16),
-                        date = $scope.productData.lastupdated.slice(0, 10);
+                  var hour = String(Date.parse(($scope.productData.lastupdated).substring(0, ($scope.productData.lastupdated).length - 1))).slice(16, 21),
+                      date = String(Date.parse(($scope.productData.lastupdated).substring(0, ($scope.productData.lastupdated).length - 1))).slice(4, 15);
+                   
                     $scope.productData.lastupdated = 
                     {
                     date: date,
                     hour: hour
-                    }
+                    };
                 })();
                 
                 
@@ -132,7 +142,9 @@ angular.module('pearsonAngApp')
 
 
 
-
+  $scope.$on('$stateChangeSuccess', function updatePage() {
+       $scope.currentPath = $location.path().replace('/',' ').replace('/',' > ').replace('/',' > ');
+    }); 
 
 
 
