@@ -26,7 +26,7 @@
     }],
     "url": "portal.json"
   }, {
-    "name": "Test Object ",
+    "name": "Test Object",
     "updates": [{
       "date": "2015-02-10T00:00:00Z",
       "status": 2

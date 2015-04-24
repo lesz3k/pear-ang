@@ -14,10 +14,24 @@ var myApp = angular
     'ngRoute',
     'ngTouch',
     'ui.bootstrap',
-    'ui.router'
+    'ui.router',
+    'ui.unique'
   ]);
-myApp.config(function($stateProvider, $urlRouterProvider) {
+myApp.config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider) {
 
+  var productName = {
+    encode: function(str) {
+      return str && str.replace(/ /g, "-");
+    },
+    decode: function(str) {
+      return str && str.replace(/-/g, " ");
+    },
+    is: angular.isString,
+    pattern: /[^/]+/
+  };
+
+
+  $urlMatcherFactoryProvider.type('product', productName);
 
   $urlRouterProvider.otherwise('/home');
 
@@ -29,24 +43,32 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
     })
 
   .state('product', {
-    url: '/:name',
+    url: '/{name:product}',
     templateUrl: 'views/product.html',
     controller: 'ProductCtrl',
     'params': {
       'jsonLocation': ':jsonLocation',
-      'name': ':name'
+      'name': ':name',
+      'date': ':date'
     }
   })
     .state('product.lastDay', {
       url: '/last24h',
       templateUrl: 'views/product.lastDay.html',
       controller: 'ProductCtrl'
+      
     })
     .state('product.lastMonth', {
       url: '/last30days',
       templateUrl: 'views/product.lastMonth.html',
       controller: 'ProductCtrl'
+      
     });
+
+
+
+
+
 
   //$httpProvider.defaults.headers.common['Authorization'] = 'Basic ' + 'publicstatusapi' + ':' + 'Password1!';
 })
@@ -62,9 +84,9 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
 .service('subsDate', function() {
 
   this.list = function(jsonPair) {
-    
-     // var cos = 0;
-      /*
+
+    // var cos = 0;
+    /*
       function subsDate(jsonPair) {
           for (var i = 0; i < $scope.productData.jsonPair.length; i++) {
             var hour = $scope.productData.jsonPair[i].date.slice(11, 16),
@@ -76,10 +98,14 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
               cos++;
           }
         }*/
-      return jsonPair;
-      
-    
+    return jsonPair;
+
+
   };
 
-});
-
+})
+  .filter('reverse', function() {
+    return function(items) {
+      return items.slice().reverse();
+    };
+  });

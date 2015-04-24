@@ -8,15 +8,42 @@
  * Controller of the pearsonAngApp
  */
 angular.module('pearsonAngApp')
-  .controller('ProductCtrl', function($scope, $location, $http, $stateParams, statusColour) {
+  .controller('ProductCtrl', function($scope, $rootScope, $location, $http, $stateParams, statusColour, selectDate, notifyTest) {
 
 
     $scope.productName = $stateParams.name;
+    $scope.day = function() {
+      return notifyTest.selectedDay() ? notifyTest.selectedDay() : 'past 30 days';
+    };
+
+
     $scope.productData = [];
     $scope.daty = [];
+    $scope.selectedDate = [];
     $scope.prodNames = [];
     $scope.currentUrl = '';
     $scope.mainJSON = [];
+
+
+
+    $scope.updateDaysList = function(day) {
+
+      notifyTest.addSelectedDay(day);
+
+      $scope.day = function() {
+        return notifyTest.selectedDay();
+      };
+
+      $scope.selectedDate = [];
+      $scope.chosenDate = function() {
+        return day
+      };
+      for (var i = 0; i < $scope.productData.updates.length; i++) {
+        if ($scope.productData.updates[i].date.date == $scope.day()) {
+          $scope.selectedDate.push($scope.productData.updates[i]);
+        }
+      }
+    };
     //$http.jsonp('https://pearsondev.service-now.com/productstatus.do?callback=JSON_CALLBACK')
     /*
     $http.get($stateParams.jsonLocation)
@@ -60,6 +87,16 @@ angular.module('pearsonAngApp')
       });
 
     */
+    var productName = {
+      encode: function(str) {
+        return str && str.replace(/ /g, "-");
+      },
+      decode: function(str) {
+        return str && str.replace(/-/g, " ");
+      },
+      is: angular.isString,
+      pattern: /[^/]+/
+    };
 
     $http.get('test.json')
       .success(function(data) {
@@ -67,8 +104,9 @@ angular.module('pearsonAngApp')
         $scope.mainJSON = data.products; // response data
 
         for (var i = 0; i < $scope.mainJSON.length; i++) {
-          var prodName = $scope.mainJSON[i].name;
+          var prodName = productName.encode($scope.mainJSON[i].name);
           $scope.prodNames.push(prodName);
+          var prodName = productName.decode($scope.mainJSON[i].name);
         }
 
         var path = $location.path();
@@ -84,48 +122,62 @@ angular.module('pearsonAngApp')
 
                 $scope.productData = subData; // response data
                 $scope.daty = subData.updates;
-               // $scope.lastUpdated;
+                // $scope.lastUpdated;
                 function subsDate(jsonPair) {
                   for (var k = 0; k < jsonPair.length; k++) {
-                  
-                     
-                     
-                      
-                      
-                      var hour = String(Date.parse((jsonPair[k].date).substring(0, (jsonPair[k].date).length - 1))).slice(16, 21),
-                date = String(Date.parse((jsonPair[k].date).substring(0, (jsonPair[k].date).length - 1))).slice(4, 15),
-                          onlyDay = String(Date.parse((jsonPair[k].date).substring(0, (jsonPair[k].date).length - 1))).slice(0, 3),
-                          dateNoYear = String(Date.parse((jsonPair[k].date).substring(0, (jsonPair[k].date).length - 1))).slice(4, 10);
-                      
-                      
-                      
-                      
+
+                    var hour = String(Date.parse((jsonPair[k].date).substring(0, (jsonPair[k].date).length - 1))).slice(16, 21),
+                      date = String(Date.parse((jsonPair[k].date).substring(0, (jsonPair[k].date).length - 1))).slice(4, 15),
+                      onlyDay = String(Date.parse((jsonPair[k].date).substring(0, (jsonPair[k].date).length - 1))).slice(0, 3),
+                      dateNoYear = String(Date.parse((jsonPair[k].date).substring(0, (jsonPair[k].date).length - 1))).slice(4, 10);
+
+
                     jsonPair[k].date = {
                       hour: hour,
                       date: date,
-                        onlyDay : onlyDay,
-                        dateNoYear: dateNoYear
+                      onlyDay: onlyDay,
+                      dateNoYear: dateNoYear
                     };
                   }
                 }
-    
                 subsDate($scope.productData.updates);
                 subsDate($scope.productData.rag_hrs);
                 subsDate($scope.productData.rag_days);
-                
-                (function(){
+
+
+                //shows the date selected from the main page (by clicking on amber or red box)
+                (function() {
+
+                  if (notifyTest.selectedDay()) {
+
+                    for (var i = 0; i < $scope.productData.updates.length; i++) {
+                      if ($scope.productData.updates[i].date.date == $scope.day()) {
+                        $scope.selectedDate.push($scope.productData.updates[i]);
+
+                      }
+                    }
+                  } else {
+                    for (var i = 0; i < $scope.productData.updates.length; i++) {
+
+                      $scope.selectedDate.push($scope.productData.updates[i]);
+
+                    }
+                  }
+
+                })();
+
+                (function() {
                   var hour = String(Date.parse(($scope.productData.lastupdated).substring(0, ($scope.productData.lastupdated).length - 1))).slice(16, 21),
-                      date = String(Date.parse(($scope.productData.lastupdated).substring(0, ($scope.productData.lastupdated).length - 1))).slice(4, 15);
-                   
-                    $scope.productData.lastupdated = 
-                    {
+                    date = String(Date.parse(($scope.productData.lastupdated).substring(0, ($scope.productData.lastupdated).length - 1))).slice(4, 15);
+
+                  $scope.productData.lastupdated = {
                     date: date,
                     hour: hour
-                    };
+                  };
                 })();
-                
-                
-                
+
+
+
               }).error(function() {
                 console.log('sub JSON failed');
               });
@@ -139,12 +191,9 @@ angular.module('pearsonAngApp')
       });
 
 
-
-
-
-  $scope.$on('$stateChangeSuccess', function updatePage() {
-       $scope.currentPath = $location.path().replace('/',' ').replace('/',' > ').replace('/',' > ');
-    }); 
+    $scope.$on('$stateChangeSuccess', function updatePage() {
+      $scope.currentPath = $location.path().replace('/', ' ').replace('/', ' > ').replace('/', ' > ');
+    });
 
 
 

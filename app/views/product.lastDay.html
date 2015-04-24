@@ -1,19 +1,23 @@
 <div class="small">
-  <p>We measure last 24hrs from midnight 00:00 to midnight 00:00 (GMT)</p>
+  <p>All times are in the GMT timezone</p>
 </div>
 <div class="row">
-  <div class="col-sm-4">
+    
+    <!--
+  <div class="col-sm-2">
     <div class="panel panel-default panel-public">
       <div class="panel-heading">
-        <h3 class="panel-title">Last 24 Hrs</h3>
+        <h3 class="panel-title">Chosen date</h3>
       </div>
       <div class="panel-body">
-        <span class="stausDate">Date: {{productData.lastupdated.date}}</span>
+        <span class="stausDate">{{chosenDate()}}</span>
       </div>
     </div>
   </div>
-  <div class="col-sm-8">
-    <div class="col-lg-12 status-colors">
+-->
+ 
+    <div class="col-sm-12 status-colors">
+        <h3 class="panel-title serviceLogTitle" style="padding-bottom: 20px">Last 24 hours</h3>
 <div ng-repeat="product in productData.rag_hrs">
 
     <p>{{product.date.hour}}</p>
@@ -21,9 +25,9 @@
         </div>
 
     </div>
-  </div>
+ 
 </div>
-<div class="text-right small">(All times are shown in your local timezone unless otherwise noted.)</div>
+
 <status-boxes></status-boxes>
 
 
@@ -38,7 +42,7 @@
     </thead>
     <tbody>
       <tr ng-repeat="product in productData.updates">
-        <td><span class="status-box" ng-class="getStatus(product)"></span>{{product.date.hour}} (GMT)</td>
+        <td><span class="status-box" ng-class="getStatus(product)"></span>{{product.date.onlyDay}}, {{product.date.date}}, {{product.date.hour}} (GMT)</td>
         <td>{{product.message}}</td>
       </tr>
     </tbody>

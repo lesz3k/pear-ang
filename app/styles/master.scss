@@ -110,6 +110,9 @@ body {
 .row {
     padding-bottom: 5px;
 }
+.status-colors--month{
+    span{cursor: pointer;}
+}
 .status-colors{
     padding-top:30px;
     >div {
@@ -189,6 +192,9 @@ body {
 .homePageStatusView {
     padding-top: 20px;
     padding-bottom: 20px;
+    th{
+        font-size: 13px;
+    }
 }
 
 .homePageStatusViewTable {
