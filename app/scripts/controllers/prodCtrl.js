@@ -98,7 +98,7 @@ angular.module('pearsonAngApp')
       pattern: /[^/]+/
     };
 
-    $http.get('test.json')
+    $http.get('https://pearsonmarketingcloud-test.apigee.net/psp/v1/productstatus.do')
       .success(function(data) {
         //console.log(data.products);
         $scope.mainJSON = data.products; // response data
@@ -177,6 +177,24 @@ angular.module('pearsonAngApp')
                 })();
 
 
+                angular.forEach($scope.productData.rag_hrs, function(elem, ind) {
+                  var arr = $scope.productData.rag_hrs;
+                  if (arr[ind + 1] == undefined) {
+                    return false;
+                  } else {
+                    if (arr[ind].date.onlyDay != arr[ind + 1].date.onlyDay) {
+                      elem.dayEnd = 1;
+                        $scope.dayPrev = elem.date.dateNoYear
+                        $scope.dayNext = arr[ind + 1].date.dateNoYear;
+                       elem.date.nextDay = arr[ind + 1].date.dateNoYear;
+                    }
+                      else{
+                          elem.dayEnd = false;
+                      }
+                  }
+               
+                });
+
 
               }).error(function() {
                 console.log('sub JSON failed');
@@ -200,6 +218,12 @@ angular.module('pearsonAngApp')
     $scope.getStatus = function(a) {
       return statusColour.list(a);
     };
+
+
+
+
+
+
 
 
 

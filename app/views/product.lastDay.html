@@ -2,8 +2,8 @@
   <p>All times are in the GMT timezone</p>
 </div>
 <div class="row">
-    
-    <!--
+
+  <!--
   <div class="col-sm-2">
     <div class="panel panel-default panel-public">
       <div class="panel-heading">
@@ -15,17 +15,26 @@
     </div>
   </div>
 -->
- 
-    <div class="col-sm-12 status-colors">
-        <h3 class="panel-title serviceLogTitle" style="padding-bottom: 20px">Last 24 hours</h3>
-<div ng-repeat="product in productData.rag_hrs">
 
-    <p>{{product.date.hour}}</p>
-        <span ng-class="{0:'status-Green', 1:'status-Amber', 2:'status-Red'}[product.status]"></span>
-        </div>
+  <div class="col-sm-12 status-colors">
+    <h3 class="panel-title serviceLogTitle" style="padding-bottom: 20px">Last 24 hours</h3>
+    <div ng-repeat="product in productData.rag_hrs">
 
-    </div>
- 
+      <p>{{product.date.hour}}</p>
+      <span ng-class="{0:'status-Green', 1:'status-Amber', 2:'status-Red'}[product.status]">    
+          <i ng-if="[product.dayEnd]==1"></i>
+    </span>
+        <div ng-if="[product.dayEnd]==1" class="daysBorder">
+            
+              <span class="dayPrev">{{product.date.dateNoYear}}</span>
+              <span class="dayNext">{{product.date.nextDay}}</span>
+            </div>
+  </div>
+
+
+
+</div>
+
 </div>
 
 <status-boxes></status-boxes>

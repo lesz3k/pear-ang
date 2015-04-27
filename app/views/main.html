@@ -29,6 +29,7 @@
       <thead>
         <tr>
           <th>Products</th>
+            <th>Last 24 h</th>
           <th ng-repeat="prod in daty">{{prod.date.date}}</th>
             <th>Last 30 days</th>
         </tr>
@@ -40,11 +41,14 @@
           <td ng-class="getStatus(product)">
             <a ui-sref="product.lastDay({jsonLocation: product.url, name: product.name})">{{product.name}}</a>
           </td>
+            
+            <td class="textField"><a ui-sref="product.lastDay({jsonLocation: product.url, name: product.name})">Last 24h </a></td>
+            
           <td ng-repeat="status in product.updates" ng-class="{0:'status-Green', 1:'status-Amber', 2:'status-Red'}[status.status]">
-
+<span class="dateMobile">{{status.date.date}}</span>
             <a ng-if="[status.status]==2 || [status.status]==1" ui-sref="product.lastMonth({date: status.date, jsonLocation: product.url, name: product.name})" ng-click="setDay(status.date.date)"></a>
           </td>
-            <td><a ui-sref="product.lastMonth({jsonLocation: product.url, name: product.name, date: false})" ng-click="setDay(false)"></a></td>
+            <td class="textField"><a ui-sref="product.lastMonth({jsonLocation: product.url, name: product.name, date: false})" ng-click="setDay(false)">30 days view</a></td>
         </tr>
       </tbody>
 

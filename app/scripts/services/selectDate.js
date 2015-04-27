@@ -45,6 +45,7 @@ service('selectDate', function() {
     
     function addSelectedDay(msg){    
         if(msg == false){
+            selectedDay = [];
             return false;
         }
         else{

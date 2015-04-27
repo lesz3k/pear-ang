@@ -115,10 +115,33 @@ body {
 }
 .status-colors{
     padding-top:30px;
+    
     >div {
     display: inline-block;
-
-        margin:0 5px 10px 0;
+position: relative;
+        margin:0 5px 30px 0;
+        
+        .daysBorder{
+       
+        .dayPrev, .dayNext{
+            position: absolute;
+            top:60px;
+            width: 50px;
+  font-size: 12px;
+        }
+        .dayPrev{         
+            right:30px;
+        }
+        .dayNext{
+            left:70px;
+        }
+        @media all and (max-width:480px){
+            .dayNext{
+                left:30px;
+            }
+         
+        }
+        }
         p{
             font-size: 10px;
             -ms-transform: rotate(-90deg); /* IE 9 */
@@ -134,6 +157,16 @@ body {
         display: inline-block;
       height: 25px;
       width: 15px;
+        position: relative;
+         i{
+            display: block;
+            position: absolute;
+            height:100px;
+            width: 1px;
+            background: #000;
+            left:19px;
+            top:-49px;
+        }
     }
 }
 .status-box {
@@ -237,7 +270,12 @@ body {
             width: 30%;
         }
 
-
+table {
+    .textField a{
+        font-size:12px;
+        text-decoration: none;
+    }
+}
 .footer{
     
     background:#3b3a3a
