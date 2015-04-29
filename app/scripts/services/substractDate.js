@@ -12,36 +12,38 @@
 myApp.
 service('substractDate',
     function () {
-        var subs = {
-            hour: function (elem) {
-                return String(Date.parse((elem).substring(0, (elem).length - 1))).slice(16, 21);
-            },
-            date: function (elem) {
-                return String(Date.parse((elem).substring(0, (elem).length - 1))).slice(4, 15);
-            },
-            dayName: function (elem) {
-                return String(Date.parse((elem).substring(0, (elem).length - 1))).slice(0, 3);
-            },
-            dateNoYear: function (elem) {
-                return String(Date.parse((elem).substring(0, (elem).length - 1))).slice(4, 10);
-            },
-            fullDateObj: function (jsonPair) {
-                for (var k = 0; k < jsonPair.length; k++) {
 
-                    var hour = String(Date.parse((jsonPair[k].date).substring(0, (jsonPair[k].date).length - 1))).slice(16, 21),
-                        date = String(Date.parse((jsonPair[k].date).substring(0, (jsonPair[k].date).length - 1))).slice(4, 15),
-                        onlyDay = String(Date.parse((jsonPair[k].date).substring(0, (jsonPair[k].date).length - 1))).slice(0, 3),
-                        dateNoYear = String(Date.parse((jsonPair[k].date).substring(0, (jsonPair[k].date).length - 1))).slice(4, 10);
+        var substract = function (elem, first, second) {
+                return String(new Date(elem)).slice(first, second);
+            },
 
-                    jsonPair[k].date = {
-                        hour: hour,
-                        date: date,
-                        onlyDay: onlyDay,
-                        dateNoYear: dateNoYear
-                    };
+            subs = {
+                hour: function (elem) {
+                    return substract(elem, 16, 21);
+                },
+                date: function (elem) {
+                    return substract(elem, 4, 15);
+                },
+                dayName: function (elem) {
+                    return substract(elem, 0, 3);
+                },
+                dateNoYear: function (elem) {
+                    return substract(elem, 4, 10);
+                },
+                fullDateObj: function (jsonPair) {
+                    for (var k = 0; k < jsonPair.length; k++) {
+
+                        var dateElem = jsonPair[k].date;
+
+                        jsonPair[k].date = {
+                            hour: subs.hour(dateElem),
+                            date: subs.date(dateElem),
+                            onlyDay: subs.dayName(dateElem),
+                            dateNoYear: subs.dateNoYear(dateElem)
+                        };
+                    }
                 }
-            }
-        };
+            };
         return {
             subs: subs
         };
