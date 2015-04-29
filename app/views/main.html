@@ -48,7 +48,7 @@
 <span class="dateMobile">{{status.date.date}}</span>
             <a ng-if="[status.status]==2 || [status.status]==1" ui-sref="product.lastMonth({date: status.date, jsonLocation: product.url, name: product.name})" ng-click="setDay(status.date.date)"></a>
           </td>
-            <td class="textField"><a ui-sref="product.lastMonth({jsonLocation: product.url, name: product.name, date: false})" ng-click="setDay(false)">30 days view</a></td>
+            <td class="textField"><a ui-sref="product.lastMonth({jsonLocation: product.url, name: product.name})" ng-click="setDay(false)">30 days view</a></td>
         </tr>
       </tbody>
 

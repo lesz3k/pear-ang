@@ -10,21 +10,18 @@
  */
 var myApp = angular
   .module('pearsonAngApp', [
-    'ngResource',
-    'ngRoute',
     'ngTouch',
     'ui.bootstrap',
-    'ui.router',
-    'ui.unique'
+    'ui.router'
   ]);
 myApp.config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider) {
 
   var productName = {
     encode: function(str) {
-      return str && str.replace(/ /g, "-");
+      return str && str.replace(/ /g, '-');
     },
     decode: function(str) {
-      return str && str.replace(/-/g, " ");
+      return str && str.replace(/-/g, ' ');
     },
     is: angular.isString,
     pattern: /[^/]+/
@@ -65,12 +62,6 @@ myApp.config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryProv
       
     });
 
-
-
-
-
-
-  //$httpProvider.defaults.headers.common['Authorization'] = 'Basic ' + 'publicstatusapi' + ':' + 'Password1!';
 })
 
 .directive('statusBoxes', function() {
@@ -78,29 +69,4 @@ myApp.config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryProv
     templateUrl: 'views/status-boxes.html',
     restrict: 'E'
   };
-})
-
-
-.service('subsDate', function() {
-
-  this.list = function(jsonPair) {
-
-    // var cos = 0;
-    /*
-      function subsDate(jsonPair) {
-          for (var i = 0; i < $scope.productData.jsonPair.length; i++) {
-            var hour = $scope.productData.jsonPair[i].date.slice(11, 16),
-              date = $scope.productData.jsonPair[i].date.slice(0, 10);
-            $scope.productData.jsonPair[i].date = {
-              hour: hour,
-              date: date
-            };
-              cos++;
-          }
-        }*/
-    return jsonPair;
-
-
-  };
-
 });

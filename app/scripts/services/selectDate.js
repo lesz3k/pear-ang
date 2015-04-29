@@ -1,71 +1,34 @@
 'use strict';
 
 /**
- * @ngdoc overviewsss
+ * @ngdoc overviews
  * @name pearsonAngApp
  * @description
  * # pearsonAngApp
  *
- * service of the application.
+ * service for storing selected date.
  */
 
 myApp.
-service('selectDate', function() {
-
-  var allDays = [],
-    selDay = ['ss'];
-
-  this.addAllDays = function(arr) {
-    allDays = [];
-    allDays.push(arr);
-  };
-  this.addSelectedDay = function(arr) {
-    selDay = [];
-    selDay.push(arr);
-
-  };
-
-
-  return {
-    getAllDays: allDays,
-    getSelectedDay: selDay,
-    addSelectedDay: function(arr) {
-      selDay = [];
-      selDay.push(arr);
-
-    }
-  }
-
-})
-
-.service('notifyTest', 
-  function() {
-    var selectedDay = [];
-
-    
-    function addSelectedDay(msg){    
-        if(msg == false){
-            selectedDay = [];
-            return false;
+service('selectDay',
+    function () {
+        var selectedDay = [];
+        function addSelectedDay(msg) {
+            if (msg == false) {
+                selectedDay = [];
+                return false;
+            } else {
+                selectedDay.push(msg);
+                if (selectedDay.length == 2) {
+                    selectedDay.shift();
+                }
+            }
         }
-        else{
-        selectedDay.push(msg);
-        if (selectedDay.length==2){
-            selectedDay.shift();
-        }
-        }
+        return {
+            addSelectedDay: addSelectedDay,
+            selectedDay: function () {
+                return String(selectedDay);
+            }
+        };
     }
-    
-    
-      
-    return {
-
-     addSelectedDay : addSelectedDay,
-    selectedDay : function (){
-        return String(selectedDay);
-    }  
-        
-      
-    }
-  }
 );

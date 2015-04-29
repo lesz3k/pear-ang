@@ -8,224 +8,183 @@
  * Controller of the pearsonAngApp
  */
 angular.module('pearsonAngApp')
-  .controller('ProductCtrl', function($scope, $rootScope, $location, $http, $stateParams, statusColour, selectDate, notifyTest) {
+    .controller('ProductCtrl', function ($scope, $rootScope, $location, $http, $stateParams, statusColour, selectDay, modifyString, substractDate) {
 
+        $scope.productName = $stateParams.name;
+        $scope.day = function () {
+            return selectDay.selectedDay() ? selectDay.selectedDay() : 'past 30 days';
+        };
 
-    $scope.productName = $stateParams.name;
-    $scope.day = function() {
-      return notifyTest.selectedDay() ? notifyTest.selectedDay() : 'past 30 days';
-    };
+        $scope.productData = [];
+        $scope.selectedDate = [];
+        $scope.prodNames = [];
+        $scope.mainJSON = [];
 
+        $scope.lastDayUpdates = [];
 
-    $scope.productData = [];
-    $scope.daty = [];
-    $scope.selectedDate = [];
-    $scope.prodNames = [];
-    $scope.currentUrl = '';
-    $scope.mainJSON = [];
+        $scope.updateDaysList = function (day) {
 
+            selectDay.addSelectedDay(day);
 
-
-    $scope.updateDaysList = function(day) {
-
-      notifyTest.addSelectedDay(day);
-
-      $scope.day = function() {
-        return notifyTest.selectedDay();
-      };
-
-      $scope.selectedDate = [];
-      $scope.chosenDate = function() {
-        return day
-      };
-      for (var i = 0; i < $scope.productData.updates.length; i++) {
-        if ($scope.productData.updates[i].date.date == $scope.day()) {
-          $scope.selectedDate.push($scope.productData.updates[i]);
-        }
-      }
-    };
-    //$http.jsonp('https://pearsondev.service-now.com/productstatus.do?callback=JSON_CALLBACK')
-    /*
-    $http.get($stateParams.jsonLocation)
-      .success(function(data) {
-
-        $scope.productData = data; // response data
-
-        $scope.daty = data.updates;
-
-        function subsDate(jsonPair) {
-          for (var i = 0; i < jsonPair.length; i++) {
-            var hour = jsonPair[i].date.slice(11, 16),
-              hourNoMins = jsonPair[i].date.slice(11, 13),
-              date = jsonPair[i].date.slice(0, 10),
-              dateOnlyDay = jsonPair[i].date.slice(8, 10);
-            jsonPair[i].date = {
-              hour: hour,
-              hourNoMins: hourNoMins,
-              dateOnlyDay: dateOnlyDay,
-              date: date
+            $scope.day = function () {
+                return selectDay.selectedDay();
             };
-          }
-        }
 
-        subsDate($scope.productData.updates);
-        subsDate($scope.productData.rag_hrs);
-        subsDate($scope.productData.rag_days);
+            $scope.selectedDate = [];
+            $scope.chosenDate = function () {
+                return day;
+            };
 
+            $scope.checker = true;
 
-        var lastHour = $scope.productData.lastupdated.slice(11, 16),
-          lastDate = $scope.productData.lastupdated.slice(0, 10);
-        $scope.productData.lastupdated = {
-          hour: lastHour,
-          date: lastDate
+            for (var i = 0; i < $scope.productData.updates.length; i++) {
+                if ($scope.productData.updates[i].date.date === $scope.day()) {
+                    $scope.selectedDate.push($scope.productData.updates[i]);
+                    $scope.checker = false;
+                }
+            }
+            if ($scope.checker) {
+                $scope.selectedDate = {
+                    prod: {
+                        date: {
+                            onlyDay: '',
+                            date: $scope.day(),
+                            hour: ''
+                        },
+                        message: 'No updates on that day'
+                    }
+                };
+            }
+
+        };
+
+        $http.get('https://pearsonmarketingcloud-test.apigee.net/psp/v1/productstatus.do')
+            .success(function (data) {
+
+                $scope.mainJSON = data.products; // response data
+
+                for (var i = 0; i < $scope.mainJSON.length; i++) {
+                    var prodName = modifyString.url.encode($scope.mainJSON[i].name);
+                    $scope.prodNames.push(prodName);
+                    prodName = modifyString.url.decode($scope.mainJSON[i].name);
+                }
+
+                var path = $location.path();
+
+                for (var j = 0; j < $scope.prodNames.length; j++) {
+                    var prodName2 = $scope.prodNames[j];
+                    if (path.indexOf(prodName2) > 0) {
+
+                        $http.get($scope.mainJSON[j].url)
+                            .success(function (subData) {
+                                console.log('sub JSON passed!');
+
+                                $scope.productData = subData; // response data
+
+                                substractDate.subs.fullDateObj($scope.productData.updates);
+                                substractDate.subs.fullDateObj($scope.productData.rag_hrs);
+                                substractDate.subs.fullDateObj($scope.productData.rag_days);
+
+                                //iterate through updates in JSON file and check if messages are from last 24 h - if yes then show them
+                                (function () {
+                                    var last24hLng = $scope.productData.rag_hrs.length - 1,
+                                        prodDataUpdates = $scope.productData.updates,
+                                        prodDataLastHours = $scope.productData.rag_hrs,
+                                        checker = true;
+
+                                    for (var i = 0; i < $scope.productData.updates.length; i++) {
+                                        if (prodDataUpdates[i].date.date == prodDataLastHours[last24hLng].date.date || prodDataUpdates[i].date.date == prodDataLastHours[0].date.date) {
+                                            checker = false;
+                                            $scope.lastDayUpdates.push(prodDataUpdates[i]);
+                                        }
+                                    }
+
+                                    if (checker) {
+                                        $scope.lastDayUpdates = {
+                                            prod: {
+                                                date: {
+                                                    onlyDay: prodDataLastHours[last24hLng].date.onlyDay,
+                                                    date: prodDataLastHours[last24hLng].date.date,
+                                                    hour: prodDataLastHours[last24hLng].date.hour
+                                                },
+                                                message: 'No updates within last 24 hours'
+                                            }
+                                        };
+                                    }
+                                })();
+
+                                //shows the date selected from the main page (by clicking on amber or red box)
+                                (function () {
+                                    if (selectDay.selectedDay()) {
+                                        $scope.checker = true;
+                                        for (var i = 0; i < $scope.productData.updates.length; i++) {
+                                            if ($scope.productData.updates[i].date.date == $scope.day()) {
+                                                $scope.selectedDate.push($scope.productData.updates[i]);
+                                                $scope.checker = false;
+                                            }
+                                        }
+                                        if ($scope.checker) {
+                                            $scope.selectedDate = {
+                                                prod: {
+                                                    date: {
+                                                        onlyDay: '',
+                                                        date: $scope.day(),
+                                                        hour: ''
+                                                    },
+                                                    message: 'No updates on that day'
+                                                }
+                                            };
+                                        }
+                                    } else {
+                                        $scope.checker = false;
+                                        for (var j = 0; j < $scope.productData.updates.length; j++) {
+                                            $scope.selectedDate.push($scope.productData.updates[j]);
+
+                                        }
+                                    }
+                                })();
+
+                                $scope.productData.lastupdated = {
+                                    date: substractDate.subs.date($scope.productData.lastupdated),
+                                    hour: substractDate.subs.hour($scope.productData.lastupdated)
+                                };
+
+                                //forEach on 24h view to add a border between last status day and the previous one, and to add the dates of twa last days
+                                angular.forEach($scope.productData.rag_hrs, function (elem, ind) {
+                                    var arr = $scope.productData.rag_hrs;
+                                    if (arr[ind + 1] == undefined) {
+                                        return false;
+                                    } else {
+                                        if (arr[ind].date.onlyDay != arr[ind + 1].date.onlyDay) {
+                                            elem.dayEnd = 1;
+                                            $scope.dayPrev = elem.date.dateNoYear;
+                                            $scope.dayNext = arr[ind + 1].date.dateNoYear;
+                                            elem.date.nextDay = arr[ind + 1].date.dateNoYear;
+                                        } else {
+                                            elem.dayEnd = false;
+                                        }
+                                    }
+                                });
+
+                            }).error(function () {
+                                console.log('sub JSON failed');
+                            });
+
+                        return false;
+                    }
+                }
+
+            }).error(function () {
+                console.log('DATA failed');
+            });
+
+        $scope.$on('$stateChangeSuccess', function updatePage() {
+            $scope.currentPath = $location.path().replace('/', ' ').replace('/', ' > ').replace('/', ' > ');
+        });
+
+        $scope.getStatus = function (a) {
+            return statusColour.list(a);
         };
 
 
-
-      }).error(function() {
-
-      });
-
-    */
-    var productName = {
-      encode: function(str) {
-        return str && str.replace(/ /g, "-");
-      },
-      decode: function(str) {
-        return str && str.replace(/-/g, " ");
-      },
-      is: angular.isString,
-      pattern: /[^/]+/
-    };
-
-    $http.get('https://pearsonmarketingcloud-test.apigee.net/psp/v1/productstatus.do')
-      .success(function(data) {
-        //console.log(data.products);
-        $scope.mainJSON = data.products; // response data
-
-        for (var i = 0; i < $scope.mainJSON.length; i++) {
-          var prodName = productName.encode($scope.mainJSON[i].name);
-          $scope.prodNames.push(prodName);
-          var prodName = productName.decode($scope.mainJSON[i].name);
-        }
-
-        var path = $location.path();
-
-        for (var j = 0; j < $scope.prodNames.length; j++) {
-          var prodName2 = $scope.prodNames[j];
-          if (path.indexOf(prodName2) > 0) {
-            $scope.currentUrl = prodName2;
-
-            $http.get($scope.mainJSON[j].url)
-              .success(function(subData) {
-                console.log('sub JSON passed!');
-
-                $scope.productData = subData; // response data
-                $scope.daty = subData.updates;
-                // $scope.lastUpdated;
-                function subsDate(jsonPair) {
-                  for (var k = 0; k < jsonPair.length; k++) {
-
-                    var hour = String(Date.parse((jsonPair[k].date).substring(0, (jsonPair[k].date).length - 1))).slice(16, 21),
-                      date = String(Date.parse((jsonPair[k].date).substring(0, (jsonPair[k].date).length - 1))).slice(4, 15),
-                      onlyDay = String(Date.parse((jsonPair[k].date).substring(0, (jsonPair[k].date).length - 1))).slice(0, 3),
-                      dateNoYear = String(Date.parse((jsonPair[k].date).substring(0, (jsonPair[k].date).length - 1))).slice(4, 10);
-
-
-                    jsonPair[k].date = {
-                      hour: hour,
-                      date: date,
-                      onlyDay: onlyDay,
-                      dateNoYear: dateNoYear
-                    };
-                  }
-                }
-                subsDate($scope.productData.updates);
-                subsDate($scope.productData.rag_hrs);
-                subsDate($scope.productData.rag_days);
-
-
-                //shows the date selected from the main page (by clicking on amber or red box)
-                (function() {
-
-                  if (notifyTest.selectedDay()) {
-
-                    for (var i = 0; i < $scope.productData.updates.length; i++) {
-                      if ($scope.productData.updates[i].date.date == $scope.day()) {
-                        $scope.selectedDate.push($scope.productData.updates[i]);
-
-                      }
-                    }
-                  } else {
-                    for (var i = 0; i < $scope.productData.updates.length; i++) {
-
-                      $scope.selectedDate.push($scope.productData.updates[i]);
-
-                    }
-                  }
-
-                })();
-
-                (function() {
-                  var hour = String(Date.parse(($scope.productData.lastupdated).substring(0, ($scope.productData.lastupdated).length - 1))).slice(16, 21),
-                    date = String(Date.parse(($scope.productData.lastupdated).substring(0, ($scope.productData.lastupdated).length - 1))).slice(4, 15);
-
-                  $scope.productData.lastupdated = {
-                    date: date,
-                    hour: hour
-                  };
-                })();
-
-
-                angular.forEach($scope.productData.rag_hrs, function(elem, ind) {
-                  var arr = $scope.productData.rag_hrs;
-                  if (arr[ind + 1] == undefined) {
-                    return false;
-                  } else {
-                    if (arr[ind].date.onlyDay != arr[ind + 1].date.onlyDay) {
-                      elem.dayEnd = 1;
-                        $scope.dayPrev = elem.date.dateNoYear
-                        $scope.dayNext = arr[ind + 1].date.dateNoYear;
-                       elem.date.nextDay = arr[ind + 1].date.dateNoYear;
-                    }
-                      else{
-                          elem.dayEnd = false;
-                      }
-                  }
-               
-                });
-
-
-              }).error(function() {
-                console.log('sub JSON failed');
-              });
-
-            return false;
-          }
-        }
-
-      }).error(function() {
-        console.log('DATA failed');
-      });
-
-
-    $scope.$on('$stateChangeSuccess', function updatePage() {
-      $scope.currentPath = $location.path().replace('/', ' ').replace('/', ' > ').replace('/', ' > ');
     });
-
-
-
-    $scope.getStatus = function(a) {
-      return statusColour.list(a);
-    };
-
-
-
-
-
-
-
-
-
-
-  });

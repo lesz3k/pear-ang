@@ -1,12 +1,12 @@
 'use strict';
 
 /**
- * @ngdoc overviewsss
+ * @ngdoc overviews
  * @name pearsonAngApp
  * @description
  * # pearsonAngApp
  *
- * service of the application.
+ * service for setting the class (color) based on status.
  */
 
 myApp.
@@ -38,9 +38,7 @@ service('statusColour', function() {
       prodUpdates = [];
       prodUpdates.push(product);
       setColor(prodUpdates);
-    }
-
-    
+    }  
 
     if (red === true) {
       className = 'redProduct';

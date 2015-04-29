@@ -42,22 +42,16 @@
     </thead>
     <tbody>
       <tr ng-repeat="product in selectedDate">
-        <td><span class="status-box" ng-class="getStatus(product)"></span>{{product.date.onlyDay}}, {{product.date.date}}, {{product.date.hour}} (GMT)</td>
-        <td>{{product.message}}</td>
+        <td><span class="status-box" ng-class="getStatus(product)"></span>
+            <span ng-if="checker==false">{{product.date.onlyDay}}, {{product.date.date}}, {{product.date.hour}} (GMT)</span>
+          <span ng-if="checker">{{product.date.date}}</span>
+          </td>
+        <td>{{product.message}}
+          
+         
+          </td>
+         
       </tr>
     </tbody>
   </table>
-    
-    
- 
-
-
-
-
-
-
-
-
-
-
 

@@ -3,20 +3,8 @@
 </div>
 <div class="row">
 
-  <!--
-  <div class="col-sm-2">
-    <div class="panel panel-default panel-public">
-      <div class="panel-heading">
-        <h3 class="panel-title">Chosen date</h3>
-      </div>
-      <div class="panel-body">
-        <span class="stausDate">{{chosenDate()}}</span>
-      </div>
-    </div>
-  </div>
--->
 
-  <div class="col-sm-12 status-colors">
+  <div class="col-sm-12 status-colors status-colors--day">
     <h3 class="panel-title serviceLogTitle" style="padding-bottom: 20px">Last 24 hours</h3>
     <div ng-repeat="product in productData.rag_hrs">
 
@@ -40,8 +28,7 @@
 <status-boxes></status-boxes>
 
 
-
-<div class="">
+<div>
   <table class="table table-detail" id="no-more-tables">
     <thead>
       <tr>
@@ -50,20 +37,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="product in productData.updates">
+      <tr ng-repeat="product in lastDayUpdates">
         <td><span class="status-box" ng-class="getStatus(product)"></span>{{product.date.onlyDay}}, {{product.date.date}}, {{product.date.hour}} (GMT)</td>
         <td>{{product.message}}</td>
       </tr>
     </tbody>
   </table>
-
-
-
-
-
-
-
-
 
 </div>
 

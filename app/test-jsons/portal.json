@@ -172,5 +172,17 @@
     "date": "2015-04-15T14:09:00Z",
     "message": "This service is now working normally",
     "status": 0
+  }, {
+    "date": "2015-04-23T17:29:00Z",
+    "message": "High issue",
+    "status": 2
+  }, {
+    "date": "2015-04-24T18:19:00Z",
+    "message": "Some issue",
+    "status": 1
+  }, {
+    "date": "2015-04-22T14:09:00Z",
+    "message": "This service is now working normally",
+    "status": 0
   }]
 }

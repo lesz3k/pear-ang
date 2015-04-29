@@ -1,6 +1,77 @@
-@media only screen and (max-width: 800px) {
+@media all and (max-width: 768px) {
+    .nav-tabs.productsTab {
+        background-color: #f2f2f2;
+        border-bottom: 0px;
+        > li {
+            width: 50%;
+            > a {
+                margin-right: 0;
+            }
+        }
+    }
+    .status-colors--day,
+    .status-colors--month {
+        padding-top: 0;
+        span {
+            height: 45px;
+            width: 35px;
+        }
+        > div {
+            margin: 0 10px 10px 0;
+            p {
+                font-size: 12px;
+                -webkit-transform: none;
+                transform: none;
+                display: block;
+                pointer-events: none;
+                margin: 0;
+                position: absolute;
+                z-index: 2;
+                height: 40px;
+                width: 31px;
+                display: block;
+                left: 1px;
+                top: 2px;
+                color: #fff;
+                text-align: center;
+            }
+        }
+    }
+    .status-colors--day {
+        span {
+            height: 20px;
+            width: 100%;
+            i {
+                display: none;
+            }
+        }
+        > div {
+            display: block;
+            margin: 0;
+            .daysBorder {
+                margin: 0;
+                span.dayPrev, span.dayNext {
+                    position: static;
+                    width: 100%;
+                    text-align: center;
+                }
+                span.dayPrev{
+                    border-bottom: 1px solid #c0c0c0;
+                }
+            }
+            p {
+                height: auto;
+                width: auto;
+                left: 10px;
+                top: 2px;
+            }
+        }
+    }
+}
 
+@media only screen and (max-width: 800px) {
     /* Force table to not be like tables anymore */
+    
     #no-more-tables table,
     #no-more-tables thead,
     #no-more-tables tbody,
@@ -9,36 +80,38 @@
     #no-more-tables tr {
         display: block;
     }
-    .table-detail tbody tr td{
-    &:first-child{
-        span {padding-top: 12px;}
-    }
-        &:nth-child(2){
+    .table-detail tbody tr td {
+        &:first-child {
+            span {
+                padding-top: 12px;
+            }
+        }
+        &:nth-child(2) {
             background-color: #f5f5f5;
         }
     }
-    #no-more-tables tbody tr td:first-child{
-        height:auto;
+    #no-more-tables tbody tr td:first-child {
+        height: auto;
         min-height: 45px;
-          font-size: 16px;
-        a{
-            padding-top:5px;
+        font-size: 16px;
+        a {
+            padding-top: 5px;
         }
     }
-        /* Hide table headers (but not display: none;, for accessibility) */
-        #no-more-tables thead tr {
-            position: absolute;
-            top: -9999px;
-            left: -9999px;
-        }
-
+    /* Hide table headers (but not display: none;, for accessibility) */
+    
+    #no-more-tables thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
     #no-more-tables tr {
         border: 1px solid #ccc;
-          margin-bottom: 20px;
+        margin-bottom: 20px;
     }
-
     #no-more-tables td {
         /* Behave  like a "row" */
+        
         border: none;
         border-bottom: 1px solid #eee;
         position: relative;
@@ -46,33 +119,34 @@
         white-space: normal;
         text-align: center;
     }
-    .homePageStatusViewTable{
+    .homePageStatusViewTable {
         td {
-            height:35px;
+            height: 35px;
         }
     }
-
-        #no-more-tables td:before {
-            /* Now like a table header */
-            position: absolute;
-            /* Top/left values mimic padding */
-            top: 6px;
-            left: 6px;
-            width: 45%;
-            padding-right: 10px;
-            white-space: nowrap;
-            text-align: left;
-            font-weight: bold;
-        }
-
-        /*
+    #no-more-tables td:before {
+        /* Now like a table header */
+        
+        position: absolute;
+        /* Top/left values mimic padding */
+        
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+    }
+    /*
         Label the data
         */
-        #no-more-tables td:before {
-            content: attr(data-title);
-        }
-
-    .homePageStatusViewTable thead tr td:first-child, .homePageStatusViewTable tbody tr td:first-child {
+    
+    #no-more-tables td:before {
+        content: attr(data-title);
+    }
+    .homePageStatusViewTable thead tr td:first-child,
+    .homePageStatusViewTable tbody tr td:first-child {
         background-color: #ffffff;
         width: 100%;
     }
