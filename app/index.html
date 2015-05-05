@@ -2,136 +2,140 @@
 <html class="no-js">
 
 <head>
-  <meta charset="utf-8">
-  <title></title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-  <!-- build:css(.) styles/vendor.css -->
-  <!-- bower:css -->
-  <!-- endbower -->
-  <!-- endbuild -->
-    
-  <!-- build:css(.tmp) styles/main.css -->
-    
-  <link rel="stylesheet" href="styles/main.css">
-    
-  <!-- endbuild -->
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css(.tmp) styles/main.css -->
+
+    <link rel="stylesheet" href="styles/main.css">
+
+    <!-- endbuild -->
 </head>
 
 <body ng-app="pearsonAngApp">
-  <!--[if lt IE 7]>
+    <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
 
-  <header class="site-hd" id="site-header">
-      <div class="header">
-          
-          <div class="header-banner">
-    <nav class="navbar navbar-public">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" ui-sref="home">
-            <img src="images/global/pearsonlogo.png">
-          </a>
+    <header class="site-hd" id="site-header">
+        <div class="header">
+
+            <div class="header-banner">
+                <nav class="navbar navbar-public">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" ui-sref="home">
+                                <img src="images/global/pearsonlogo.png">
+                            </a>
+                        </div>
+                        <div class="navbar-right"><span class="headerTagline">Always Learning</span>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="header-body">
+                <div class="container">
+                    <div class="header-nav">
+                        <nav role="navigation">
+                            <div class="header-nav-header">
+                                <button title="Menu" aria-expanded="false" aria-haspopup="true" aria-label="Menu" type="button" class="header-nav-toggle" data-toggle="collapse" data-target="#header-nav-body">
+                                    <span class="sr-only">Open Menu</span> <span class="fa fa-bars"></span>
+                                </button>
+                            </div>
+                            <div class="collapse header-nav-collapse" id="header-nav-body">
+                                <ul class="header-nav-lvl1">
+                                    <li><a class="header-nav-lvl1-link " data-hover="primary" href="http://www.pearson.com/about-us.html">About Us</a>
+                                    </li>
+                                    <li><a class="header-nav-lvl1-link " data-hover="primary" href="http://www.pearson.com/learning.html">Learning</a>
+                                    </li>
+                                    <li><a class="header-nav-lvl1-link " data-hover="primary" href="http://www.pearson.com/innovation.html">Innovation</a>
+                                    </li>
+                                    <li><a class="header-nav-lvl1-link " data-hover="primary" href="http://www.pearson.com/investors.html">Investors</a>
+                                    </li>
+                                    <li><a class="header-nav-lvl1-link " data-hover="primary" href="http://www.pearson.com/social-impact.html">Social impact</a>
+                                    </li>
+                                    <li><a class="header-nav-lvl1-link " data-hover="primary" href="http://www.pearson.com/careers.html">Careers</a>
+                                    </li>
+                                    <li><a class="header-nav-lvl1-link " data-hover="primary" href="http://www.pearson.com/news.html">News</a>
+                                    </li>
+                                    <li><a class="header-nav-lvl1-link " data-hover="primary" href="http://www.pearson.com/contact-us.html">Contact us</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="header-search-box">
+                        <form id="header-search-box" role="search" action="/search-results.html" onsubmit="return validateForm('#header-search-box',['.header-search-box-input'])">
+                            <label for="header-search-box-input" class="sr-only">Search</label>
+                            <input class="header-search-box-input" type="search" id="header-search-box-input" title="Search" placeholder="Search" name="q" value="">
+                            <button aria-label="Go" class="header-search-box-icon" type="submit">
+                                <span class="fa fa-search"></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="navbar-right"><span class="headerTagline">Always Learning</span>
-        </div>
-      </div>
-    </nav>
-          </div>
-          <div class="header-body">
-			<div class="container">
-				<div class="header-nav"><nav role="navigation">
-	<div class="header-nav-header">
-		<button title="Menu" aria-expanded="false" aria-haspopup="true" aria-label="Menu" type="button" class="header-nav-toggle" data-toggle="collapse" data-target="#header-nav-body">
-			<span class="sr-only">Open Menu</span> <span class="fa fa-bars"></span>
-		</button>
-	</div>
-	<div class="collapse header-nav-collapse" id="header-nav-body">
-		<ul class="header-nav-lvl1">
-			<li><a class="header-nav-lvl1-link " data-hover="primary" href="/about-us.html">About Us</a>
-							</li>
-				<li><a class="header-nav-lvl1-link " data-hover="primary" href="/learning.html">Learning</a>
-							</li>
-				<li><a class="header-nav-lvl1-link " data-hover="primary" href="/innovation.html">Innovation</a>
-							</li>
-				<li><a class="header-nav-lvl1-link " data-hover="primary" href="/investors.html">Investors</a>
-							</li>
-				<li><a class="header-nav-lvl1-link " data-hover="primary" href="/social-impact.html">Social impact</a>
-							</li>
-				<li><a class="header-nav-lvl1-link " data-hover="primary" href="/careers.html">Careers</a>
-							</li>
-				<li><a class="header-nav-lvl1-link " data-hover="primary" href="/news.html">News</a>
-							</li>
-				<li><a class="header-nav-lvl1-link " data-hover="primary" href="/contact-us.html">Contact us</a>
-							</li>
-				</ul>
-	</div>
-</nav></div>
-<div class="header-search-box"><form id="header-search-box" role="search" action="/search-results.html" onsubmit="return validateForm('#header-search-box',['.header-search-box-input'])">
-	<label for="header-search-box-input" class="sr-only">Search</label><input class="header-search-box-input" type="search" id="header-search-box-input" title="Search" placeholder="Search" name="q" value="">
-	<button aria-label="Go" class="header-search-box-icon" type="submit">
-		<span class="fa fa-search"></span>
-	</button>
-</form></div>
-</div>
-		</div>
-          
-</div>
-      
-  </header>
+
+    </header>
 
 
 
 
-  <main role="main">
-    <div ui-view></div>
-  </main>
+    <main role="main">
+        <div ui-view></div>
+    </main>
 
-  <div ng-include="'views/includes/footer.html'"></div>
+    <div ng-include="'views/includes/footer.html'"></div>
 
-  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-  <script>
-    ! function(A, n, g, u, l, a, r) {
-      A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
-        (A[l].q = A[l].q || []).push(arguments)
-      }, A[l].l = +new Date, a = n.createElement(g),
-      r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
-    }(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+        ! function (A, n, g, u, l, a, r) {
+            A.GoogleAnalyticsObject = l, A[l] = A[l] || function () {
+                    (A[l].q = A[l].q || []).push(arguments)
+                }, A[l].l = +new Date, a = n.createElement(g),
+                r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+        }(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-    ga('create', 'UA-XXXXX-X');
-    ga('send', 'pageview');
-  </script>
+        ga('create', 'UA-XXXXX-X');
+        ga('send', 'pageview');
+    </script>
 
-  <!-- build:js(.) scripts/vendor.js -->
-  <!-- bower:js -->
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
-  <script src="bower_components/angular-resource/angular-resource.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="bower_components/angular-touch/angular-touch.js"></script>
-  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-  <script src="bower_components/angular-ui-utils/unique.js"></script>
-  <!-- endbower -->
-  <!-- endbuild -->
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-ui-utils/unique.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
 
-  <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
 
-  <script src="scripts/app.js"></script>
-  <script src="scripts/controllers/main.js"></script>
-  <script src="scripts/controllers/prodCtrl.js"></script>
-  <script src="scripts/services/statusColour.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/prodCtrl.js"></script>
+    <script src="scripts/services/statusColour.js"></script>
     <script src="scripts/services/selectDate.js"></script>
     <script src="scripts/services/modifyString.js"></script>
     <script src="scripts/services/substractDate.js"></script>
-    
-  <!-- endbuild -->
+
+    <!-- endbuild -->
 </body>
 
 </html>
-

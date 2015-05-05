@@ -1,4 +1,5 @@
-.serviceLogTitle, .stausDate {
+.serviceLogTitle,
+.stausDate {
     color: #9d1348;
     font-size: 16px;
     padding-bottom: 20px;
@@ -12,52 +13,56 @@
 .productsTab {
     background-color: #f2f2f2;
     border-bottom: 0px;
-
 }
 
 .tabTitle {
     padding-left: 10px;
+    font-size: 14px;
 }
 
 .homePageStatusViewTable td {
     background-color: #f5f5f5;
 }
-.dateMobile{
-        display: none;
+
+.dateMobile {
+    display: none;
     color: #fff;
-  padding-top: 2px;
-    }
-@media only screen and (max-width: 800px){
-    .dateMobile{
+    padding-top: 2px;
+}
+
+@media only screen and (max-width: 800px) {
+    .dateMobile {
         display: block;
     }
-    table .textField a{
+    table .textField a {
         font-size: 14px;
-        padding-top:2px;
+        padding-top: 2px;
     }
 }
-@media only screen and (min-width: 800px) and (max-width:1200px) {
 
+@media only screen and (min-width: 800px) and (max-width: 1200px) {
     .imgStatusPill {
         margin-right: 0px;
     }
-
-    .homePageStatusViewTable tbody tr td, .homePageStatusViewTable thead tr th {
+    .homePageStatusViewTable tbody tr td,
+    .homePageStatusViewTable thead tr th {
         white-space: normal;
     }
-#no-more-tables .textField{
-    line-height: 1;
-}
-        .homePageStatusViewTable thead tr td:first-child, .homePageStatusViewTable tbody tr td:first-child {
-            width: 20%;
-        }
+    #no-more-tables .textField {
+        line-height: 1;
+    }
+    .homePageStatusViewTable thead tr td:first-child,
+    .homePageStatusViewTable tbody tr td:first-child {
+        width: 20%;
+    }
 }
 
 div.ui-datepicker {
     font-size: 0.8em;
 }
 
-.amber24Status, .red24Status {
+.amber24Status,
+.red24Status {
     padding-top: 30px;
     text-align: right;
     display: none;

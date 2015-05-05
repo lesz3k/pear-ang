@@ -55,7 +55,7 @@
                     width: 100%;
                     text-align: center;
                 }
-                span.dayPrev{
+                span.dayPrev {
                     border-bottom: 1px solid #c0c0c0;
                 }
             }
@@ -66,6 +66,10 @@
                 top: 2px;
             }
         }
+    }
+    status-boxes {
+        display: block;
+        margin: 20px 0;
     }
 }
 

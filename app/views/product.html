@@ -1,58 +1,59 @@
 <div class="breadcrumb">
-        <ol class="breadcrumb container">
-          <li class="active breadcrumbHeader">You are here</li>
-          <li><a ui-sref="home">Home</a></li>
-            <li class="active">{{currentPath}}</li>
-        </ol>
-      </div>
+    <ol class="breadcrumb container">
+        <li class="active breadcrumbHeader">You are here</li>
+        <li><a ui-sref="home">Home</a>
+        </li>
+        <li class="active">{{currentPath}}</li>
+    </ol>
+</div>
 
 <div class="container">
-<div class="mainContainer">
+    <div class="mainContainer">
 
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="pageTitle">Product Status: <b>{{productName}}</b><span id="titleProductName"></span>
-      </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="pageTitle">Product Status: <b>{{productName}}</b><span id="titleProductName"></span>
+                </div>
+            </div>
+        </div>
+        <div class="pageDescription">This page offers performance information, check back here any time to view the current status of the service listed below.</div>
+        <hr>
+
+
+
+        <p>Last updated on {{productData.lastupdated.date}} at {{productData.lastupdated.hour}}</p>
+        <div class="serviceLogTitle">View Service Log:</div>
+
+
+
+        <div role="tabpanel">
+            <ul class="nav nav-tabs productsTab" role="tablist">
+                <li role="presentation" ui-sref-active="active">
+                    <a ui-sref="product.lastDay" aria-controls="home" role="tab" data-toggle="tab">
+                        <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                        <span class="tabTitle">Last 24 hrs</span>
+                    </a>
+                </li>
+                <li role="presentation" ui-sref-active="active">
+                    <a ui-sref="product.lastMonth" aria-controls="profile" role="tab" data-toggle="tab">
+                        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                        <span class="tabTitle">Last 30 days</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div ui-view></div>
+            </div>
+
+
+        </div>
+
+
+
+
+
+
     </div>
-  </div>
-  <div class="pageDescription">This page offers performance information, check back here any time to view the current status of the service listed below.</div>
-  <hr>
-    
-
-
-  <p>Last updated on {{productData.lastupdated.date}} at {{productData.lastupdated.hour}}</p>
-  <div class="serviceLogTitle">View Service Log:</div>
-
-
-
-  <div role="tabpanel">
-    <ul class="nav nav-tabs productsTab" role="tablist">
-      <li role="presentation" ui-sref-active="active">
-        <a ui-sref="product.lastDay" aria-controls="home" role="tab" data-toggle="tab" >
-          <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-          <span class="tabTitle">Last 24 hrs</span>
-        </a>
-      </li>
-      <li role="presentation" ui-sref-active="active">
-        <a ui-sref="product.lastMonth" aria-controls="profile" role="tab" data-toggle="tab">
-          <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-          <span class="tabTitle">Last 30 days</span>
-        </a>
-      </li>
-    </ul>
-
-    <div class="tab-content">
-      <div ui-view></div>
-    </div>
-
-
-  </div>
-
-
-
-
-
-
-</div>
 
 </div>
