@@ -1,0 +1,83 @@
+{
+  "lastupdated": "2015-05-05T13:26:21Z",
+  "products": [{
+    "name": "Revel",
+    "status":0,
+    "updates": [{
+      "date": "2015-04-29T00:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-30T00:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-05-01T00:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-05-02T00:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-05-03T00:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-05-04T00:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-05-05T00:00:00Z",
+      "status": 2
+    }],
+    "url": "test-jsons/revel.json"
+  }, {
+    "name": "MyMathLab",
+    "status":0,
+    "updates": [{
+      "date": "2015-04-29T00:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-30T00:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-05-01T00:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-05-02T00:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-05-03T00:00:00Z",
+      "status": 1
+    }, {
+      "date": "2015-05-04T00:00:00Z",
+      "status": 1
+    }, {
+      "date": "2015-05-05T00:00:00Z",
+      "status": 0
+    }],
+    "url": "test-jsons/mymathlab.json"
+  }, {
+    "name": "Connexus",
+    "status":0,
+    "updates": [{
+        "date": "2015-04-29T00:00:00Z",
+        "status": 0
+      }, {
+        "date": "2015-04-30T00:00:00Z",
+        "status": 0
+      }, {
+        "date": "2015-05-01T00:00:00Z",
+        "status": 2
+      }, {
+        "date": "2015-05-02T00:00:00Z",
+        "status": 0
+      }, {
+        "date": "2015-05-03T00:00:00Z",
+        "status": 0
+      }, {
+        "date": "2015-05-04T00:00:00Z",
+        "status": 0
+      }, {
+        "date": "2015-05-05T00:00:00Z",
+        "status": 1
+      }
+    ],
+    "url": "test-jsons/connexus.json"
+  }]
+}

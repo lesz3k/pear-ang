@@ -1,0 +1,235 @@
+{
+  "lastupdated": "2015-05-05T13:25:12Z",
+  "rag_days": [{
+      "date": "2015-04-01T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-02T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-03T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-04T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-05T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-06T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-07T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-08T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-09T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-10T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-11T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-12T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-13T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-14T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-15T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-16T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-17T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-18T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-19T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-20T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-21T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-22T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-23T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-24T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-25T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-26T07:00:00Z",
+      "status": 1
+    }, {
+      "date": "2015-04-27T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-28T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-29T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-04-30T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-05-01T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-05-02T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-05-03T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-05-04T07:00:00Z",
+      "status": 0
+    }, {
+      "date": "2015-05-05T07:00:00Z",
+      "status": 2
+    }
+  ],
+  "rag_hrs": [ {
+    "date": "2015-05-05T13:00:00Z",
+    "status": 0
+  }, {
+    "date": "2015-05-05T12:00:00Z",
+    "status": 0
+  }, {
+    "date": "2015-05-05T11:00:00Z",
+    "status": 0
+  }, {
+    "date": "2015-05-05T10:00:00Z",
+    "status": 0
+  }, {
+    "date": "2015-05-05T09:00:00Z",
+    "status": 0
+  }, {
+    "date": "2015-05-05T08:00:00Z",
+    "status": 0
+  }, {
+    "date": "2015-05-05T07:00:00Z",
+    "status": 2
+  }, {
+    "date": "2015-05-05T06:00:00Z",
+    "status": 2
+  }, {
+    "date": "2015-05-05T05:00:00Z",
+    "status": 0
+  }, {
+    "date": "2015-05-05T04:00:00Z",
+    "status": 0
+  }, {
+    "date": "2015-05-05T03:00:00Z",
+    "status": 0
+  }, {
+    "date": "2015-05-05T02:00:00Z",
+    "status": 0
+  }, {
+    "date": "2015-05-05T01:00:00Z",
+    "status": 0
+  }, {
+    "date": "2015-05-05T00:00:00Z",
+    "status": 0
+  }, {
+    "date": "2015-05-04T23:00:00Z",
+    "status": 0
+  }, {
+    "date": "2015-05-04T22:00:00Z",
+    "status": 0
+  }, {
+    "date": "2015-05-04T21:00:00Z",
+    "status": 0
+  }, {
+    "date": "2015-05-04T20:00:00Z",
+    "status": 0
+  }, {
+    "date": "2015-05-04T19:00:00Z",
+    "status": 0
+  }, {
+    "date": "2015-05-04T18:00:00Z",
+    "status": 0
+  }, {
+    "date": "2015-05-04T17:00:00Z",
+    "status": 0
+  }, {
+    "date": "2015-05-04T16:00:00Z",
+    "status": 0
+  }, {
+    "date": "2015-05-04T15:00:00Z",
+    "status": 0
+  }, {
+    "date": "2015-05-04T14:00:00Z",
+    "status": 0
+  }
+  ],
+  "updates": [
+
+
+    {
+     "date": "2015-05-05T07:05:00Z",
+     "message": "The problem with Revel should now be resolved. We apologize for the inconvenience caused and we thank you again for your patience. Please rest assured that system reliability is a top priority at Pearson, and we are making continuous improvements to make our systems better. Affected users were experiencing intermittent unavailability of the service.",
+     "status": 0
+   }, {
+     "date": "2015-05-05T06:46:00Z",
+     "message": "We have found a solution to the problem affecting some users on Revel, and a target resolution time has now been set. The solution should be applied on the 05th of May 2015 at 07:00 GMT. Please note that this time frame is an estimate and may change. Affected users are experiencing intermittent unavailability of the service.",
+     "status": 2
+   }, {
+     "date": "2015-05-05T06:20:00Z",
+     "message": "We are now able to confirm that some users are currently experiencing issues with Revel. We are working on a solution and we thank you for your patience. Affected users are experiencing intermittent unavailability of the service.",
+     "status": 2
+   },
+  {
+    "date": "2015-05-05T06:14:00Z",
+    "message": "We have received reports of potential issues with Revel which we are now investigating. We will provide an update shortly.",
+    "status": 1
+  },
+ {
+    "date": "2015-05-04T07:20:00Z",
+    "message": "bla bla bla test",
+    "status": 1
+  },
+   {
+    "date": "2015-04-26T14:55:00Z",
+    "message": "The problem with Revel should now be resolved. We apologize for the inconvenience caused and we thank you again for your patience. Please rest assured that system reliability is a top priority at Pearson, and we are making continuous improvements to make our systems better. Affected users were experiencing difficulty accessing the World History course.",
+    "status": 0
+  }, {
+    "date": "2015-04-26T14:45:00Z",
+    "message": "We have found a solution to the problem affecting some users on Revel, and a target resolution time has now been set. The solution should be applied on the 26th of April 2015 at 15:00 GMT. Please note that this time frame is an estimate and may change. Affected users are experiencing difficulty accessing the World History course.",
+    "status": 1
+  },  {
+    "date": "2015-04-26T13:15:00Z",
+    "message": "We are still working hard on resolving the issue that some users are currently experiencing on Revel. We thank you for your continued patience. Affected users are experiencing difficulty accessing the World History course.",
+    "status": 1
+  }, {
+    "date": "2015-04-26T10:15:00Z",
+    "message": "We are now able to confirm that some users are currently experiencing issues with Revel. We are working on a solution and we thank you for your patience. Affected users are experiencing difficulty accessing the World History course.",
+    "status": 1
+  },
+  {
+    "date": "2015-04-26T10:09:00Z",
+    "message": "We have received reports of potential issues with Revel which we are now investigating. We will provide an update shortly.",
+    "status": 1
+  }
+
+
+  ]
+}

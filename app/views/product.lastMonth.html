@@ -1,5 +1,5 @@
 <div class="small">
-    <p>We measure last 24hrs from midnight 00:00 to midnight 00:00 (GMT)</p>
+    <p>All dates and times are in the GMT timezone.</p>
 </div>
 <div class="row">
     <div class="col-sm-2">
@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="col-sm-10 status-colors status-colors--month">
-        <h3 class="panel-title serviceLogTitle" style="padding-bottom: 20px">Last 30 days</h3>
+        <h3 class="panel-title serviceLogTitle" style="padding-bottom: 20px">Last 35 days</h3>
         <div ng-repeat="product in productData.rag_days.slice().reverse()">
             <p>{{product.date.dateNoYear}}</p>
             <span ng-click="updateDaysList(product.date.date)" ng-class="{0:'status-Green', 1:'status-Amber', 2:'status-Red'}[product.status]"></span>

@@ -17,7 +17,9 @@ angular.module('pearsonAngApp')
             selectDay.addSelectedDay(day);
         };
 
-        $http.get('https://pearsonmarketingcloud-test.apigee.net/psp/v1/productstatus.do')
+        console.log( selectDay.selectedDay().length === 0);    
+    
+        $http.get('test-jsons/products.json')
             .success(function (data) {
                 console.log('DATA pass');
 
@@ -43,7 +45,7 @@ angular.module('pearsonAngApp')
             });
 
         $scope.getStatus = function (a) {
-            return statusColour.list(a);
+            return (a == 2 ? "redProduct" : a == 1 ? "amberProduct" : "greenProduct");
         };
 
 

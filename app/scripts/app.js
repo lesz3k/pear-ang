@@ -50,13 +50,13 @@ myApp.config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryProv
     }
   })
     .state('product.lastDay', {
-      url: '/last24h',
+      url: '/Last_24_hrs',
       templateUrl: 'views/product.lastDay.html',
       controller: 'ProductCtrl'
       
     })
     .state('product.lastMonth', {
-      url: '/last30days',
+      url: '/Last_35_days',
       templateUrl: 'views/product.lastMonth.html',
       controller: 'ProductCtrl'
       

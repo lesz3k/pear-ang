@@ -12,7 +12,7 @@ angular.module('pearsonAngApp')
 
         $scope.productName = $stateParams.name;
         $scope.day = function () {
-            return selectDay.selectedDay() ? selectDay.selectedDay() : 'past 30 days';
+            return (selectDay.selectedDay().length !== 0) ? selectDay.selectedDay() : 'past 30 days';
         };
 
         $scope.productData = [];
@@ -20,6 +20,10 @@ angular.module('pearsonAngApp')
         $scope.prodNames = [];
         $scope.mainJSON = [];
 
+        $scope.setDay = function (day) {
+            selectDay.addSelectedDay(day);
+        };
+    
         $scope.lastDayUpdates = [];
 
         $scope.updateDaysList = function (day) {
@@ -31,9 +35,6 @@ angular.module('pearsonAngApp')
             };
 
             $scope.selectedDate = [];
-            $scope.chosenDate = function () {
-                return day;
-            };
 
             $scope.checker = true;
 
@@ -58,7 +59,7 @@ angular.module('pearsonAngApp')
 
         };
 
-        $http.get('https://pearsonmarketingcloud-test.apigee.net/psp/v1/productstatus.do')
+        $http.get('test-jsons/products.json')
             .success(function (data) {
 
                 $scope.mainJSON = data.products; // response data
@@ -66,7 +67,7 @@ angular.module('pearsonAngApp')
                 for (var i = 0; i < $scope.mainJSON.length; i++) {
                     var prodName = modifyString.url.encode($scope.mainJSON[i].name);
                     $scope.prodNames.push(prodName);
-                    prodName = modifyString.url.decode($scope.mainJSON[i].name);
+                    modifyString.url.decode($scope.mainJSON[i].name);
                 }
 
                 var path = $location.path();
@@ -93,7 +94,8 @@ angular.module('pearsonAngApp')
                                         checker = true;
 
                                     for (var i = 0; i < $scope.productData.updates.length; i++) {
-                                        if (prodDataUpdates[i].date.date == prodDataLastHours[last24hLng].date.date || prodDataUpdates[i].date.date == prodDataLastHours[0].date.date) {
+                                        if (//prodDataUpdates[i].date.date == prodDataLastHours[last24hLng].date.date || that has been removed as per request to show only last day'supdates, not full 24 h
+                                            prodDataUpdates[i].date.date == prodDataLastHours[0].date.date) {
                                             checker = false;
                                             $scope.lastDayUpdates.push(prodDataUpdates[i]);
                                         }
@@ -115,7 +117,7 @@ angular.module('pearsonAngApp')
 
                                 //shows the date selected from the main page (by clicking on amber or red box)
                                 (function () {
-                                    if (selectDay.selectedDay()) {
+                                    if (selectDay.selectedDay().length !== 0) {
                                         $scope.checker = true;
                                         for (var i = 0; i < $scope.productData.updates.length; i++) {
                                             if ($scope.productData.updates[i].date.date == $scope.day()) {
@@ -179,7 +181,8 @@ angular.module('pearsonAngApp')
             });
 
         $scope.$on('$stateChangeSuccess', function updatePage() {
-            $scope.currentPath = $location.path().replace('/', ' ').replace('/', ' > ').replace('/', ' > ');
+           // $scope.currentPath = $location.path().replace('/', ' ').replace('/', ' > ').replace('/', ' > ');
+             $scope.currentPath = $location.path().replace(/\//ig, ' > ').replace(/_|-/ig, ' ');
         });
 
         $scope.getStatus = function (a) {

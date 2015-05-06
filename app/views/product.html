@@ -1,18 +1,18 @@
+
+
+<div class="container">
+    <div class="mainContainer">
 <div class="breadcrumb">
     <ol class="breadcrumb container">
-        <li class="active breadcrumbHeader">You are here</li>
-        <li><a ui-sref="home">Home</a>
+        <li class="active breadcrumbHeader">You are here > </li>
+        <li><a ui-sref="home" ng-click="setDay(false)">Home</a>
         </li>
         <li class="active">{{currentPath}}</li>
     </ol>
 </div>
-
-<div class="container">
-    <div class="mainContainer">
-
         <div class="row">
             <div class="col-lg-12">
-                <div class="pageTitle">Product Status: <b>{{productName}}</b><span id="titleProductName"></span>
+                <div class="pageTitle">Product Status Details for <b>{{productName}}</b><span id="titleProductName"></span>
                 </div>
             </div>
         </div>
@@ -21,8 +21,8 @@
 
 
 
-        <p>Last updated on {{productData.lastupdated.date}} at {{productData.lastupdated.hour}}</p>
-        <div class="serviceLogTitle">View Service Log:</div>
+     
+       
 
 
 
@@ -37,7 +37,7 @@
                 <li role="presentation" ui-sref-active="active">
                     <a ui-sref="product.lastMonth" aria-controls="profile" role="tab" data-toggle="tab">
                         <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                        <span class="tabTitle">Last 30 days</span>
+                        <span class="tabTitle">Last 35 days</span>
                     </a>
                 </li>
             </ul>
@@ -49,7 +49,8 @@
 
         </div>
 
-
+<br />
+           <p class="small">Last updated on {{productData.lastupdated.date}} at {{productData.lastupdated.hour}}</p>
 
 
 

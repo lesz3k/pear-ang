@@ -47,13 +47,14 @@
 }
 
 .breadcrumb {
-    margin: 6px 0 0;
-    padding: 8px 15px 2px;
+      margin: 0;
+  padding: 6px 0 2px;
     background: #fff;
     > li + li::before {
-        content: "> ";
-        padding: 0;
-        color: inherit;
+        //content: "> ";
+        //padding: 0;
+        //color: inherit;
+        display: none;
     }
 }
 
@@ -112,7 +113,7 @@
 }
 
 .status-colors {
-    padding-top: 30px;
+    padding-top: 15px;
     >div {
         display: inline-block;
         position: relative;
@@ -197,19 +198,19 @@
 }
 
 .greenProduct {
-    border-left: 3px solid #7db658;
+    border-left: 5px solid #7db658;
 }
 
 .redProduct {
-    border-left: 3px solid #e04854;
+    border-left: 5px solid #e04854;
 }
 
 .amberProduct {
-    border-left: 3px solid #fdb913;
+    border-left: 5px solid #fdb913;
 }
 
 .blueProduct {
-    border-left: 3px solid #C0C0C0;
+    border-left: 5px solid #C0C0C0;
 }
 
 .homePageStatusView {
